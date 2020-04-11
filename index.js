@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const router = express.Router();
@@ -10,6 +11,7 @@ const router = express.Router();
 const environment = process.env.NODE_ENV;
 const stage = require('./config')[environment];
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended:true
